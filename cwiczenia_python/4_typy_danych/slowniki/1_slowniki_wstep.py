@@ -9,11 +9,9 @@ slownik_imion = {
     4: "Dawid",
     5: "Ewa",
     "xd": "nowy wpis xd",
-    1: "Kolejny Artur"
+    1: "Kolejny Maciek"
 }
 
 
 a = slownik_imion[1]
 print(a)
-# xd = slownik_imion["xd"]
-# print(xd)
