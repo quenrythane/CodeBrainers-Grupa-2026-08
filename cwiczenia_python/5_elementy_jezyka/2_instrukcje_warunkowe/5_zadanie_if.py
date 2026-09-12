@@ -1,5 +1,5 @@
-imie = 1
-wiek = 1
+imie = "Kasia"
+wiek = 25
 
 """
 Sprawdź czy osoba jest kobietą pełnoletnią (18 lat).
