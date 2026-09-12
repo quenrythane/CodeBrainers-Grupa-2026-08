@@ -1,4 +1,10 @@
+# CIEKAWOSTKA: elementy złożonych typów mogą być dowolną strukturą danych, oprócz samych siebie
+lista = [1, "a", 2.5, True, [1, 2, 3], print, print()]
+print(lista)
+
+
 lista_imiona = ["Artur", "Basia", "Celina", "Dawid", "Ewa"]
+
 
 artur = [0]
 

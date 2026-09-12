@@ -12,3 +12,6 @@ slownik_owocow = {
 z podanego słownika wyprintuj wszystkie żeńskie imiona
 klucze = slownik_owocow.keys()
 """
+
+lista_wszystkich_imion = list(slownik_owocow.keys())
+# TODO:
