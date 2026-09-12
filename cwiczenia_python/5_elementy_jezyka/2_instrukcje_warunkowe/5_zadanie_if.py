@@ -15,3 +15,8 @@ Sprawdź dla danych:
 4. imie = Tomek, wiek = 17
 """
 
+if imie.endswith('a') and wiek >= 18:
+    print("energetyki rządzą")
+else:
+    print("wolę jabłka")
+
