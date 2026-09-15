@@ -4,7 +4,6 @@ def hello(**osoba):
         print(f"Hello {imie} ma {wiek} lat")
 
 
-
 słownik = {
     "ania": 20,
     "bartek": 25,
