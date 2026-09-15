@@ -1,11 +1,10 @@
 
 imie = input("podaj imie: ")
-try:
+try:  # if
     wiek = int(input("podaj wiek: "))
-except:
+except:  # else
     wiek = "Nie podano liczby"
 
 print(f"Hello {imie}. Masz {wiek} lat")
-
 
 
