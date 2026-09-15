@@ -35,5 +35,11 @@ def zrob_herbate(imie="Ania", rodzaj_herbaty="czarna"):
 
 
 
-zrob_herbate("Tomek")
+# zrob_herbate("Tomek")
+
+# uruchomienie funkcji dla każdej osoby
+lista_imion = ["Adam", "Bartek", "Czarek", "Damian", "Ewa"]
+
+for osoba in lista_imion:
+    zrob_herbate(osoba)
 
