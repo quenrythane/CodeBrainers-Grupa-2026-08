@@ -10,3 +10,15 @@ Adam, 2
 Bartek, 4
 Czarek
 """
+
+
+def przywitanie(imie, liczba=3):
+    for _ in range(liczba):
+        print(f"cześć {imie}")
+
+
+przywitanie("Adam", 2)
+przywitanie("Bartek", 4)
+przywitanie("Czarek")
+
+
