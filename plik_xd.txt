@@ -1,0 +1,3 @@
+linia 1 a
+linia 2 b
+linia 3 c
