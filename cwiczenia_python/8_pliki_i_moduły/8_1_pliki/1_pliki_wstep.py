@@ -17,3 +17,10 @@ plik_xd = open(nazwa_pliku, poziom_uprwanien_read)
 
 """ Odczytujemy wszystkie linie jako listę.  """
 # print("To jest lista wszystkich linii: ", plik_xd.readlines())
+
+
+""" Wpisujemy do pliku nową linię. - nie zadziała bo plik jest otwarty w trybie odczytu 'r' """
+# plik_xd.write("Linia 4")
+
+""" Zamykamy plik.  """
+plik_xd.close()

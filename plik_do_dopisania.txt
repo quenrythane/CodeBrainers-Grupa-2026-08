@@ -1,0 +1,16 @@
+Artur Babiński  [3:02 PM]
+# lista_imiona = list(slownik_owocow.keys())  # opcjonalne
+for imie in slownik_owocow:
+    if imie.endswith("a"):
+        print(imie)
+
+"""
+z podanego słownika wyprintuj wszystkie owoce której mają więcej niż 6 liter
+klucze = slownik_owocow.keys()
+"""
+
+
+Linia 4
+Linia xd
+Linia 4
+Linia 4Linia xdLinia 1Linia 2
