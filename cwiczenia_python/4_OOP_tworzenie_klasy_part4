@@ -1,0 +1,29 @@
+
+
+class LoginPage:
+    username_input = ("id", "username")
+    password_input = ("id", "password")
+    login_button = ("id", "loginButton")
+
+    def wpisz_username(self, username):
+        print(f"wpisuje {username} w pole {self.username_input}")
+
+    def wpisz_password(self, password):
+        print(f"wpisuje {password} w pole {self.password_input}")
+
+    def kliknij_przycisk_login(self):
+        print(f"klikam przycisk {self.login_button}")
+
+
+login_page = LoginPage()
+login_page.username_input = "xd"
+login_page.wpisz_username("admin".upper())
+login_page.wpisz_password("tajne hasło".upper())
+login_page.kliknij_przycisk_login()
+
+nowy_login_page = LoginPage()
+print(nowy_login_page.username_input)
+
+print(id(login_page.username_input))
+print(id(nowy_login_page.username_input))
+
