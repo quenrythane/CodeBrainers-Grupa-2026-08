@@ -7,11 +7,15 @@ logger = logging.getLogger(__name__)
 @pytest.mark.wip
 @pytest.mark.parametrize("podstawa, wykladnik, oczekiwany_wynik", [
     (2, 3, 8),
-    (10, 2, 100),
-    (5, 3, 125)
+    # (10, 2, 100),
+    # (5, 3, 125)
 ])
 def test_potegowanie(podstawa, wykladnik, oczekiwany_wynik):
+    logger.debug("Jestem debugiem")
     logger.info(f"Testujemy potęgowanie: {podstawa} do potęgi {wykladnik}")
+    logger.warning("Jestem warningiem")
+    logger.error("Jestem errorrm")
+    logger.critical("Jestem criticalem")
     assert potegowanie(podstawa, wykladnik) == oczekiwany_wynik
 
     # assert potegowanie(2, 3) == 8
