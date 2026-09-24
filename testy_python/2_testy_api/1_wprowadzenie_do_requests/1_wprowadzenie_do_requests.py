@@ -1,7 +1,7 @@
 import requests
 
 # potrzebne elementy do wykonania zapytania http:
-# metody http
+# metoda http
 # endpoint
 # headers
 # body
@@ -18,7 +18,7 @@ my_payload = {
   "password": "admin"
 }
 
-response = requests.post(
+response = requests.post(  # metoda http
     url=login_url,  # endpoint
     headers=my_headers,  # headers
     json=my_payload  # body
