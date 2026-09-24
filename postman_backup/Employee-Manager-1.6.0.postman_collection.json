@@ -1,0 +1,529 @@
+{
+  "info": {
+    "_postman_id": "54d9bc20-10b0-4c06-a504-f6a83a0d4f27",
+    "name": "Employee-Manager-1.6.0",
+    "description": "BASE_URL=[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48411685",
+    "_collection_link": "https://go.postman.co/collection/48411685-54d9bc20-10b0-4c06-a504-f6a83a0d4f27?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "update_employee",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*/*"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "http://127.0.0.1:8000"
+          },
+          {
+            "key": "Pragma",
+            "value": "no-cache"
+          },
+          {
+            "key": "Referer",
+            "value": "http://127.0.0.1:8000/"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Not=A?Brand\";v=\"99\", \"Google Chrome\";v=\"151\", \"Chromium\";v=\"151\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"XX YY\",\r\n    \"salary\": {{employee_salary}},\r\n    \"age\": {{employee_age}},\r\n    \"position\": \"{{employee_position}}\",\r\n    \"on_leave\": {{employee_leave}}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/employees/{{employee_id}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "employees",
+            "{{employee_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deprecated - create_employee_with_parameters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*/*"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "http://127.0.0.1:8000"
+          },
+          {
+            "key": "Pragma",
+            "value": "no-cache"
+          },
+          {
+            "key": "Referer",
+            "value": "http://127.0.0.1:8000/"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Not=A?Brand\";v=\"99\", \"Google Chrome\";v=\"151\", \"Chromium\";v=\"151\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Cezary\",\r\n    \"salary\": 3000,\r\n    \"age\": 30,\r\n    \"position\": \"Junior QA\",\r\n    \"on_leave\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/employees?xd=xd&parametr2=wartosc2",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "xd",
+              "value": "xd"
+            },
+            {
+              "key": "parametr2",
+              "value": "wartosc2"
+            }
+          ]
+        },
+        "description": "to zapytanie pokazuje że istnieją parametry w zapytanich"
+      },
+      "response": []
+    },
+    {
+      "name": "health",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/health",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get_all_employees",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/employees",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "employees"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete_employee",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/employees/{{employee_id}}",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "employees",
+            "{{employee_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// pamietaj synchronicznie vs asynchronicze\r",
+              "\r",
+              "// zmienna = \"wartość\"\r",
+              "// = z obiektu pm (Postman) pobierz odpowiedź (response), przefarmatuj go jako json (.json()) i z tego jsona weż wartość która kryje się pod kluczem access_token\r",
+              "var returned_token = pm.response.json().access_token\r",
+              "\r",
+              "// pm.collectionVariables.set - ustawia zmieną\r",
+              "// pierwsza pozycja z nawiasu to jak zmienna ma się nazywać\r",
+              "// druga pozycja z nawiasu to jaką wartość ma mieć ta zmienna\r",
+              "pm.collectionVariables.set(\"bearer_token\", returned_token);\r",
+              "// pm.enviroment.set(\"bearer_token\", returned_token);\r",
+              "\r",
+              "// pm.collectionVariables.get - pobiera wartość zmiennej\r",
+              "\r",
+              "var employee_name = pm.collectionVariables.get(\"employee_name\")\r",
+              "\r",
+              "// print() console.log()\r",
+              "console.log(employee_name)\r",
+              "\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/login",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create_employee",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expected = {",
+              "  name: \"Cezary\",",
+              "  salary: 4000,",
+              "  age: 30,",
+              "  position: \"Junior QA\",",
+              "  on_leave: true,",
+              "};",
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "let jsonData;",
+              "pm.test(\"Response is valid JSON\", function () {",
+              "  jsonData = pm.response.json();",
+              "  pm.expect(jsonData).to.be.an(\"object\");",
+              "});",
+              "",
+              "pm.test(\"Response fields match expected values\", function () {",
+              "  if (!jsonData) {",
+              "    jsonData = pm.response.json();",
+              "  }",
+              "",
+              "  pm.expect(jsonData.name).to.eql(expected.name);",
+              "  pm.expect(jsonData.salary).to.eql(expected.salary);",
+              "  pm.expect(jsonData.age).to.eql(expected.age);",
+              "  pm.expect(jsonData.position).to.eql(expected.position);",
+              "  pm.expect(jsonData.on_leave).to.eql(expected.on_leave);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "*/*"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.9"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Origin",
+            "value": "http://127.0.0.1:8000"
+          },
+          {
+            "key": "Pragma",
+            "value": "no-cache"
+          },
+          {
+            "key": "Referer",
+            "value": "http://127.0.0.1:8000/"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36"
+          },
+          {
+            "key": "sec-ch-ua",
+            "value": "\"Not=A?Brand\";v=\"99\", \"Google Chrome\";v=\"151\", \"Chromium\";v=\"151\""
+          },
+          {
+            "key": "sec-ch-ua-mobile",
+            "value": "?0"
+          },
+          {
+            "key": "sec-ch-ua-platform",
+            "value": "\"Windows\""
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"{{employee_name}}\",\r\n    \"salary\": {{employee_salary}},\r\n    \"age\": {{employee_age}},\r\n    \"position\": \"{{employee_position}}\",\r\n    \"on_leave\": {{employee_leave}}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/employees",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "employees"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearer_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "employee_name",
+      "value": ""
+    },
+    {
+      "key": "employee_salary",
+      "value": ""
+    },
+    {
+      "key": "employee_age",
+      "value": ""
+    },
+    {
+      "key": "employee_position",
+      "value": ""
+    },
+    {
+      "key": "employee_leave",
+      "value": ""
+    },
+    {
+      "key": "bearer_token",
+      "value": ""
+    },
+    {
+      "key": "basic_username",
+      "value": ""
+    },
+    {
+      "key": "employee_id",
+      "value": ""
+    }
+  ]
+}
