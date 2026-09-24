@@ -1,5 +1,5 @@
 import pytest
-
+import logging
 
 @pytest.fixture
 def employee_fixture():
@@ -26,6 +26,8 @@ def imie():
 # @pytest.fixture(scope="function", autouse=True)
 # def start_testu():
 #     print("\nRozpoczynam testy".upper())
+
+
 
 
 
