@@ -8,4 +8,5 @@ log_date_format = "%Y-%m-%d %H:%M:%S"
 markers = [
     "test_imienia: testy imion",
     "wip: testy w trakcie tworzenia",
+    "logging: testy z logami",
 ]
