@@ -18,6 +18,10 @@ my_payload = {
   "password": "admin"
 }
 
-response = requests.post(login_url, headers=my_headers, json=my_payload)
+response = requests.post(
+    url=login_url,  # endpoint
+    headers=my_headers,  # headers
+    json=my_payload  # body
+)
 
 print(response.json())
