@@ -3,14 +3,13 @@
 
 # aktywacja środowiska wirtualnego
 # .\.venv\Scripts\activate.bat
-
 from kalkulator import *
 
 def test_dodawanie():
     assert dodawanie(1, 5) == 6
 
 def test_odejmowanie():
-    assert odejmowanie(5, 1) == 6
+    assert odejmowanie(5, 1) == 4
 
 def test_mnozenie():
     assert mnozenie(5, 1) == 5
