@@ -26,7 +26,7 @@ def login_payload():
 def create_employee_correct_payload():
   return {
     "name": "Batosław",
-    "salary": 12345,
+    "salary": 12_345,
     "age": 30,
     "position": "Junior QA",
     "on_leave": False
