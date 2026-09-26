@@ -19,5 +19,7 @@ markers = [
     "api_test: testy api",
     "site_title: testy tytułu strony",
     "logowanie_ui: testy logowania do ui",
-    "test_ui: testy ui"
+    "test_ui: testy ui",
+    "logowanie_ui_v2: testy logowania do ui v2",
+    
 ]
