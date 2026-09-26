@@ -11,16 +11,25 @@ def login_url(base_url):
   return f"{base_url}/login"
 
 @pytest.fixture
-def get_employees_url(base_url):
+def employees_url(base_url):
   return f"{base_url}/employees"
 
-
-# api login payload
+# api payloads
 @pytest.fixture
 def login_payload():
   return {
     'username': 'admin',
     'password': 'admin'
+  }
+
+@pytest.fixture
+def create_employee_correct_payload():
+  return {
+    "name": "Batosław",
+    "salary": 12345,
+    "age": 30,
+    "position": "Junior QA",
+    "on_leave": False
   }
 
 

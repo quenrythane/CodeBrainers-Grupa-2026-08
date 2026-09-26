@@ -2,9 +2,9 @@ import requests
 import pytest
 
 @pytest.mark.get_employees
-def test_get_employees(get_employees_url, auth_headers):
+def test_get_employees(employees_url, auth_headers):
   # Act
-  response = requests.get(url=get_employees_url, headers=auth_headers)
+  response = requests.get(url=employees_url, headers=auth_headers)
 
   # Assert
   response_body = response.json()

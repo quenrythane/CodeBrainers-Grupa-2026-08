@@ -12,4 +12,6 @@ markers = [
     "wip: testy w trakcie tworzenia",
     "logging: testy z logami",
     "api_login: testy logowania do api",
+    "get_employees: testy pobierania pracowników",
+    "create_employee: testy tworzenia pracowników",
 ]
