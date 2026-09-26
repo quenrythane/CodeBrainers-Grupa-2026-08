@@ -1,7 +1,11 @@
 import requests
 import pytest
+import logging
+
+logger = logging.getLogger(__name__)
 
 
+@pytest.mark.api_test
 @pytest.mark.create_employee
 def test_create_employee(employees_url, auth_headers, create_employee_correct_payload):
   # Act

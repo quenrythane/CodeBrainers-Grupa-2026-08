@@ -14,4 +14,7 @@ markers = [
     "api_login: testy logowania do api",
     "get_employees: testy pobierania pracowników",
     "create_employee: testy tworzenia pracowników",
+    "create_employee_v2: testy tworzenia pracowników z API clientem",
+    "api_create_employee_v2_parametrize: testy tworzenia pracowników z parametrami i API clientem",
+    "api_test: testy api",
 ]

@@ -1,6 +1,7 @@
 import requests
 import pytest
 
+@pytest.mark.api_test
 @pytest.mark.api_login
 def test_logowanie(login_url, login_payload):
   # Act

@@ -25,7 +25,7 @@ from api_client.employees_client import EmployeesAPIClient
     "on_leave": False
   }
 ])
-def test_create_employee(base_url, auth_headers, employee_data):
+def test_create_employee_v2_parametrize(base_url, auth_headers, employee_data):
   # Arrange
   employees_api_client = EmployeesAPIClient(base_url)
   employees_api_client.set_auth_headers(auth_headers)

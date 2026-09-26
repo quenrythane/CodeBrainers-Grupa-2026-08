@@ -3,7 +3,7 @@ from api_client.employees_client import EmployeesAPIClient
 
 
 @pytest.mark.create_employee_v2
-def test_create_employee(base_url, auth_headers, create_employee_correct_payload):
+def test_create_employee_v2(base_url, auth_headers, create_employee_correct_payload):
   # Arrange
   employees_api_client = EmployeesAPIClient(base_url)
   employees_api_client.set_auth_headers(auth_headers)
