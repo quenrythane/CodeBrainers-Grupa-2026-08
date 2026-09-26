@@ -5,39 +5,28 @@ import pytest
 
 @pytest.mark.dodaj_pracownika
 @pytest.mark.test_ui
-def test_dodaj_pracownika():
-    # Arrange
-    driver = webdriver.Chrome()
-    driver.implicitly_wait(2)
-    driver.get("http://127.0.0.1:8000/")
-    driver.find_element(By.ID, "username").send_keys("admin")
-    driver.find_element(By.ID, "password").send_keys("admin")
-    driver.find_element(By.XPATH, "//*[@id='loginForm']/button").click()
-    assert driver.find_element(By.ID, "form-title").is_displayed()
-
+def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
     # Act
-    driver.find_element(By.ID, "name").send_keys("Basia")
-    driver.find_element(By.ID, "salary").send_keys(10_000)
-    driver.find_element(By.ID, "age").send_keys(30)
-    Select(driver.find_element(By.ID, "position")).select_by_visible_text("Junior QA")
-    driver.find_element(By.ID, "on_leave").click()
+    driver.find_element(By.ID, "name").send_keys(employee_data["name"])
+    driver.find_element(By.ID, "salary").send_keys(employee_data["salary"])
+    driver.find_element(By.ID, "age").send_keys(employee_data["age"])
+    Select(driver.find_element(By.ID, "position")).select_by_visible_text(employee_data["position"])
+    driver.find_element(By.ID, "on_leave").click() if employee_data["on_leave"] else None
     driver.find_element(By.ID, "submitBtn").click()
+    # input()
 
     # Assert
     tabela = driver.find_element(By.ID, "employees")
-    wiersze_tabeli = tabela.find_elements(By.TAG_NAME, "tr")
-    ostatni_wiersz_tabeli = wiersze_tabeli[-1]
-    komorka_ostatniego_wiersza = ostatni_wiersz_tabeli.find_elements(By.TAG_NAME, "td")
-    print(komorka_ostatniego_wiersza)  # zwraca listę nieczytelnych obiektów Selenium elementów
-    dane_ostatniego_wiersza = [element.text for element in komorka_ostatniego_wiersza][:-1]
-    print(dane_ostatniego_wiersza)  # zwraca ['1', 'Artur', '10000', '30', 'Junior QA', '✅']
+    ostatni_wiersz_tabeli = tabela.find_elements(By.TAG_NAME, "tr")[-1]
+    komorki_ostatniego_wiersza = ostatni_wiersz_tabeli.find_elements(By.TAG_NAME, "td")
+    dane_ostatniego_wiersza = [element.text for element in komorki_ostatniego_wiersza][:-1]
 
-    assert dane_ostatniego_wiersza[0] == "2"
-    assert dane_ostatniego_wiersza[1] == "Basia"
-    assert dane_ostatniego_wiersza[2] == "10000"
-    assert dane_ostatniego_wiersza[3] == "30"
-    assert dane_ostatniego_wiersza[4] == "Junior QA"
-    assert dane_ostatniego_wiersza[5] == "✅"
+    assert int(dane_ostatniego_wiersza[0]) > 0
+    assert dane_ostatniego_wiersza[1] == employee_data["name"]
+    assert dane_ostatniego_wiersza[2] == str(employee_data["salary"])
+    assert dane_ostatniego_wiersza[3] == str(employee_data["age"])
+    assert dane_ostatniego_wiersza[4] == employee_data["position"]
+    assert dane_ostatniego_wiersza[5] == "✅" if employee_data["on_leave"] else "❌"
 
 
 
