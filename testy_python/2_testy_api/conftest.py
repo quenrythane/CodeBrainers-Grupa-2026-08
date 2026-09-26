@@ -4,6 +4,9 @@ import pytest
 def base_url():
   return "http://127.0.0.1:8000/api"
 
+@pytest.fixture
+def login_url(base_url):
+  return f"{base_url}/login"
 
 @pytest.fixture
 def login_payload():
