@@ -1,22 +1,27 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.implicitly_wait(4)
+    driver.maximize_window()
     driver.get("http://127.0.0.1:8000/")
     yield driver
     driver.quit()
 
 @pytest.fixture
-def logowanie_ui(driver):
+def wait(driver):
+    return WebDriverWait(driver, 3)
+
+@pytest.fixture
+def logowanie_ui(driver, wait):
     driver.find_element(By.ID, "username").send_keys("admin")
     driver.find_element(By.ID, "password").send_keys("admin")
     driver.find_element(By.XPATH, "//*[@id='loginForm']/button").click()
-    assert driver.find_element(By.ID, "form-title").is_displayed()
+    assert wait.until(EC.visibility_of_element_located((By.ID, "form-title"))).is_displayed()
 
 
 @pytest.fixture
