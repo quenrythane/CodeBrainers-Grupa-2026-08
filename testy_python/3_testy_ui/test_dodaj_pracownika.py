@@ -1,4 +1,4 @@
-from pages.login_page import LoginPage
+from pages.manage_employees_page import ManageEmployeesPage
 import pytest
 
 @pytest.mark.dodaj_pracownika
@@ -6,19 +6,19 @@ import pytest
 def test_dodaj_pracownika(driver, employee_data, logowanie_ui, wait):
     # Arrange
     ed = employee_data
-    login_page = LoginPage(driver, wait)
+    manage_employees_page = ManageEmployeesPage(driver, wait)
 
 
     # Act
-    login_page.fill_name(ed["name"])
-    login_page.fill_salary(ed["salary"])
-    login_page.fill_age(ed["age"])
-    login_page.fill_position(ed["position"])
-    login_page.fill_on_leave(ed["on_leave"])
-    login_page.submit_form()
+    manage_employees_page.fill_name(ed["name"])
+    manage_employees_page.fill_salary(ed["salary"])
+    manage_employees_page.fill_age(ed["age"])
+    manage_employees_page.fill_position(ed["position"])
+    manage_employees_page.fill_on_leave(ed["on_leave"])
+    manage_employees_page.submit_form()
 
     # Assert
-    dane_ostatniego_wiersza = login_page.get_last_employee_data()
+    dane_ostatniego_wiersza = manage_employees_page.get_last_employee_data()
 
     assert int(dane_ostatniego_wiersza[0]) > 0
     assert dane_ostatniego_wiersza[1] == ed["name"]
