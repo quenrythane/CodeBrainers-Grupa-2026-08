@@ -1,6 +1,7 @@
 import os
 import sys
 import pytest
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -38,3 +39,28 @@ def employee_data():
         "position": "Junior QA",
         "on_leave": True
         }
+
+
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    report = outcome.get_result()
+    if report.when == "call" and report.failed:
+        driver = item.funcargs.get("driver")
+        if driver:
+            # 1. Zapis na dysk
+            screenshots_dir = "reports/screenshots"
+            os.makedirs(screenshots_dir, exist_ok=True)
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            filename = os.path.join(screenshots_dir, f"{item.name}_{timestamp}.png")
+            driver.save_screenshot(filename)
+            # 2. Dołączenie obrazka do raportu HTML (w formacie base64)
+            pytest_html = item.config.pluginmanager.getplugin("html")
+            if pytest_html:
+                extra = getattr(report, "extra", [])
+                screenshot_b64 = driver.get_screenshot_as_base64()
+                html_img = f'<div><img src="data:image/png;base64,{screenshot_b64}" style="width:600px; border:1px solid red;" /></div>'
+                extra.append(pytest_html.extras.html(html_img))
+                report.extra = extra
