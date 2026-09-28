@@ -1,8 +1,13 @@
+import os
+import sys
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+# Wymuszenie kodowania UTF-8 w systemie Windows dla zapisywania raportu w pytest-html 3.2.0
+os.environ["PYTHONUTF8"] = "1"
 
 @pytest.fixture
 def driver():
