@@ -6,13 +6,21 @@ import pytest
 @pytest.mark.dodaj_pracownika
 @pytest.mark.test_ui
 def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
+    # Arrange
+    name_input = (By.ID, "name")
+    salary_input = (By.ID, "salary")
+    age_input = (By.ID, "age")
+    position_input = (By.ID, "position")
+    on_leave_input = (By.ID, "on_leave")
+    submit_input = (By.ID, "submitBtn")
+
     # Act
-    driver.find_element(By.ID, "name").send_keys(employee_data["name"])
-    driver.find_element(By.ID, "salary").send_keys(employee_data["salary"])
-    driver.find_element(By.ID, "age").send_keys(employee_data["age"])
-    Select(driver.find_element(By.ID, "position")).select_by_visible_text(employee_data["position"])
-    driver.find_element(By.ID, "on_leave").click() if employee_data["on_leave"] else None
-    driver.find_element(By.ID, "submitBtn").click()
+    driver.find_element(*name_input).send_keys(employee_data["name"])
+    driver.find_element(*salary_input).send_keys(employee_data["salary"])
+    driver.find_element(*age_input).send_keys(employee_data["age"])
+    Select(driver.find_element(*position_input)).select_by_visible_text(employee_data["position"])
+    driver.find_element(*on_leave_input).click() if employee_data["on_leave"] else None
+    driver.find_element(*submit_input).click()
     # input()
 
     # Assert
