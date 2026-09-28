@@ -1,12 +1,11 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
+from .base_page import BasePage
 
 
-class ManageEmployeesPage:
+class ManageEmployeesPage(BasePage):
     def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
+        super().__init__(driver, wait)
         self.name_input = (By.ID, "name")
         self.salary_input = (By.ID, "salary")
         self.age_input = (By.ID, "age")
@@ -19,28 +18,27 @@ class ManageEmployeesPage:
         self.employee_td = (By.TAG_NAME, "td")
 
     def fill_name(self, name):
-        self.wait.until(EC.visibility_of_element_located(self.name_input)).send_keys(name)
+        self.type_text(self.name_input, name)
 
     def fill_salary(self, salary):
-        self.driver.find_element(*self.salary_input).send_keys(salary)
+        self.type_text(self.salary_input, salary)
 
     def fill_age(self, age):
-        self.driver.find_element(*self.age_input).send_keys(age)
+        self.type_text(self.age_input, age)
 
     def fill_position(self, position):
-        Select(self.driver.find_element(*self.position_input)).select_by_visible_text(position)
+        self.select_by_visible_text(self.position_input, position)
 
     def fill_on_leave(self, on_leave):
-        self.driver.find_element(*self.on_leave_input).click() if on_leave else None
+        self.click(self.on_leave_input) if on_leave else None
 
     def submit_form(self):
-        self.driver.find_element(*self.submit_input).click()
+        self.click(self.submit_input)
 
     def get_last_employee_data(self):
-        tabela = self.wait.until(
-            EC.visibility_of_element_located(self.employees_table)
-            )
+        tabela = self.find_visible_element(self.employees_table)
         self.wait.until(EC.visibility_of_element_located(self.employee_tr))
-        ostatni_wiersz_tabeli = tabela.find_elements(*self.employee_tr)[-1]
+        wiersze = tabela.find_elements(*self.employee_tr)
+        ostatni_wiersz_tabeli = wiersze[-1]
         komorki_ostatniego_wiersza = ostatni_wiersz_tabeli.find_elements(*self.employee_td)
         return [element.text for element in komorki_ostatniego_wiersza][:-1]
