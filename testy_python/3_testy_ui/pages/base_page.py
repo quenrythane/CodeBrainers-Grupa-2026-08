@@ -1,10 +1,10 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support import expected_conditions as EC
-from typing import Tuple
+from typing import Tuple, List
 import logging
-
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select, WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 
 
 class BasePage:
@@ -25,7 +25,23 @@ class BasePage:
             return self.wait.until(EC.visibility_of_element_located(locator))
         except TimeoutException:
             self.logger.error(f"Element nie stał się widoczny w wyznaczonym czasie: {locator}")
-            raise TimeoutException(f"Element {locator} nie pojawił się na stronie po {Config.EXPLICIT_WAIT_TIMEOUT}s.")
+            raise TimeoutException(f"Element {locator} nie pojawił się na stronie.")
+
+    def find_elements(self, locator: Locator) -> List[WebElement]:
+        self.logger.debug(f"Wyszukiwanie elementów: {locator}")
+        return self.driver.find_elements(*locator)
+
+    def find_visible_elements(self, locator: Locator) -> List[WebElement]:
+        self.logger.debug(f"Oczekiwanie na widoczność elementów: {locator}")
+        try:
+            return self.wait.until(EC.visibility_of_all_elements_located(locator))
+        except TimeoutException:
+            self.logger.error(f"Elementy nie stały się widoczne w wyznaczonym czasie: {locator}")
+            raise TimeoutException(f"Brak widocznych elementów dla lokatora {locator}.")
+
+    def find_elements_in_element(self, parent_element: WebElement, locator: Locator) -> List[WebElement]:
+        self.logger.debug(f"Wyszukiwanie elementów podrzędnych dla {locator}")
+        return parent_element.find_elements(*locator)
 
     def find_clickable_element(self, locator: Locator) -> WebElement:
         self.logger.debug(f"Oczekiwanie na klikalność elementu: {locator}")
