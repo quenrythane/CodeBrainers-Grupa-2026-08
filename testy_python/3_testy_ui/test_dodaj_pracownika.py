@@ -3,9 +3,9 @@ from pages.employee_manager_page import EmployeeManagerPage
 
 @pytest.mark.dodaj_pracownika
 @pytest.mark.test_ui
-def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
+def test_dodaj_pracownika(driver, employee_data, logowanie_ui, wait):
     ed = employee_data
-    emp_page = EmployeeManagerPage(driver)
+    emp_page = EmployeeManagerPage(driver, wait)
 
     # Act
     emp_page.fill_name_input(ed["name"])

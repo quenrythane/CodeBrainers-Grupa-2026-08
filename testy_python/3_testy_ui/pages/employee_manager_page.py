@@ -1,11 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class EmployeeManagerPage:
-    def __init__(self, driver):
+    def __init__(self, driver, wait):
         self.driver = driver
+        self.wait = wait
         # selectors
         self.name_input = (By.ID, "name")
         self.salary_input = (By.ID, "salary")
@@ -48,8 +50,8 @@ class EmployeeManagerPage:
 
     def get_data_from_last_row(self):
         tabela = self.driver.find_element(*self.employees_table)
+        self.wait.until(EC.presence_of_all_elements_located(self.employees_table_rows))
         ostatni_wiersz_tabeli = tabela.find_elements(*self.employees_table_rows)[-1]
         komorki_ostatniego_wiersza = ostatni_wiersz_tabeli.find_elements(*self.employees_table_data)
-        # TODO: poniższe List comprehension zwraca błąd "StaleElementReferenceException". Naprawić poprzez EC.
         dane_ostatniego_wiersza = [element.text for element in komorki_ostatniego_wiersza][:-1]
         return dane_ostatniego_wiersza
