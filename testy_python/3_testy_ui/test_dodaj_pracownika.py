@@ -6,6 +6,8 @@ import pytest
 @pytest.mark.dodaj_pracownika
 @pytest.mark.test_ui
 def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
+    ed = employee_data
+
     # selectors
     name_input = (By.ID, "name")
     salary_input = (By.ID, "salary")
@@ -14,15 +16,22 @@ def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
     on_vacation_checkbox = (By.ID, "on_leave")
     add_btn = (By.ID, "submitBtn")
 
+    # akcje
+    def fill_name_input(name: str):
+        driver.find_element(*name_input).send_keys(name)
+
+
+
     # Act
-    driver.find_element(*name_input).send_keys(employee_data["name"])
-    driver.find_element(*salary_input).send_keys(employee_data["salary"])
-    driver.find_element(*age_input).send_keys(employee_data["age"])
-    Select(driver.find_element(*position_select)).select_by_visible_text(employee_data["position"])
-    driver.find_element(*on_vacation_checkbox).click() if employee_data["on_leave"] else None
+    fill_name_input(ed["name"])
+    
+    driver.find_element(*salary_input).send_keys(ed["salary"])
+    driver.find_element(*age_input).send_keys(ed["age"])
+    Select(driver.find_element(*position_select)).select_by_visible_text(ed["position"])
+    driver.find_element(*on_vacation_checkbox).click() if ed["on_leave"] else None
     driver.find_element(*add_btn).click()
 
-    # employee_manger_page.fill_employee_name(employee_data["name"])
+    # employee_manger_page.fill_employee_name(ed["name"])
 
 
 
@@ -34,11 +43,11 @@ def test_dodaj_pracownika(driver, employee_data, logowanie_ui):
     dane_ostatniego_wiersza = [element.text for element in komorki_ostatniego_wiersza][:-1]
 
     assert int(dane_ostatniego_wiersza[0]) > 0
-    assert dane_ostatniego_wiersza[1] == employee_data["name"]
-    assert dane_ostatniego_wiersza[2] == str(employee_data["salary"])
-    assert dane_ostatniego_wiersza[3] == str(employee_data["age"])
-    assert dane_ostatniego_wiersza[4] == employee_data["position"]
-    assert dane_ostatniego_wiersza[5] == "✅" if employee_data["on_leave"] else "❌"
+    assert dane_ostatniego_wiersza[1] == ed["name"]
+    assert dane_ostatniego_wiersza[2] == str(ed["salary"])
+    assert dane_ostatniego_wiersza[3] == str(ed["age"])
+    assert dane_ostatniego_wiersza[4] == ed["position"]
+    assert dane_ostatniego_wiersza[5] == "✅" if ed["on_leave"] else "❌"
 
 
 
