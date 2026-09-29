@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.implicitly_wait(4)
+    driver.implicitly_wait(6)
     driver.get("http://127.0.0.1:8000/")
     yield driver
     driver.quit()
